@@ -41,9 +41,11 @@ var SettingsKeys = [
 //TODO: Make things dynamically...
 
 var ServiceKeys = [
-	["nginx", "Nginx Web Server"],
-	["mysql", "MySQL Server"],
-	["postgresql", "PostgreSQL Server"]
+	["nginx", "Nginx Web Server", "nginx"],
+	["mysql", "MySQL Server", "mysql"],
+	["postgresql", "PostgreSQL Server", "postgres"],
+	//["network-manager", "Network-Manager", "NetworkManager"],
+	["apache2", "Apache Web Server", "apache2"]
 ];
 
 var CommandConstants = new function() {
@@ -146,7 +148,7 @@ devUtils.prototype = {
 			if((this.services.actor == true || this.services == true) && this.services_type == "buttons") {
 				
 				for (var i in ServiceKeys) {
-					this[ServiceKeys[i][0] + "EnabledSwitch"] = new PopupMenu.PopupSwitchMenuItem(_(ServiceKeys[i][1]), checkService(ServiceKeys[i][0]));
+					this[ServiceKeys[i][0] + "EnabledSwitch"] = new PopupMenu.PopupSwitchMenuItem(_(ServiceKeys[i][1]), checkService(ServiceKeys[i][2]));
 					this.menu.addMenuItem(this[ServiceKeys[i][0] + "EnabledSwitch"]);
 					
 				}
